@@ -1,0 +1,75 @@
+<!--
+  ~ Copyright (c) 2016 Guillaume Wallet < wallet (dot) guillaume (at) gmail (dot) com >
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+<idea-plugin version="2">
+  <id>fr.gwallet.intellij.windowsizer</id>
+  <name>Window Sizer</name>
+  <version>1.0</version>
+  <vendor url="http://github.com/gwallet/intellij-windowsizer">Guillaume Wallet</vendor>
+
+  <description><![CDATA[
+      <p>Center and resize the project window to predefined dimensions, or ask for a custom one if needed.</p>
+      <p>Available for IntelliJ platform ≥ 135, <em>/!\ Requires Java 8 Runtime /!\</em></p>
+      <p>Licensed under the Apache License, Version 2.0</p>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <dl>
+      <dt>1.0 - 2016-04-14 : Initial release</dt>
+      <dd><p>3 actions in <em>Window</em> menu :<br></p>
+      <ul>
+      <li>Resize ... : display a popup to customize the new project window dimension</li>
+      <li>Resize 1280 x 720</li>
+      <li>Resize 1920 x 1080</li>
+      </ul>
+      </dd>
+      </dl>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="135.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="fr.gwallet.intellij.windowsizer.ResizeWindow1080Action"
+            class="fr.gwallet.intellij.windowsizer.ResizeWindow1080Action" text="Resize 1920 x 1080"
+            description="Resize current window in 1920x1080">
+      <add-to-group group-id="WindowMenu" anchor="before" relative-to-action="MinimizeCurrentWindow"/>
+    </action>
+    <action id="fr.gwallet.intellij.windowsizer.ResizeWindow720Action"
+            class="fr.gwallet.intellij.windowsizer.ResizeWindow720Action" text="Resize 1280 x 720"
+            description="Resize current window in 1280x720">
+      <add-to-group group-id="WindowMenu" anchor="before" relative-to-action="fr.gwallet.intellij.windowsizer.ResizeWindow1080Action"/>
+    </action>
+    <action id="fr.gwallet.intellij.windowsizer.ResizeWindowCustomAction"
+            class="fr.gwallet.intellij.windowsizer.ResizeWindowCustomAction" text="Resize ..."
+            description="Resize current window">
+      <add-to-group group-id="WindowMenu" anchor="before" relative-to-action="fr.gwallet.intellij.windowsizer.ResizeWindow720Action"/>
+    </action>
+  </actions>
+
+</idea-plugin>
