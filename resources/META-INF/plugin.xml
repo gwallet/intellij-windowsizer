@@ -17,7 +17,7 @@
 <idea-plugin version="2">
   <id>fr.gwallet.intellij.windowsizer</id>
   <name>Window Sizer</name>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <vendor url="http://github.com/gwallet/intellij-windowsizer">Guillaume Wallet</vendor>
 
   <description><![CDATA[
